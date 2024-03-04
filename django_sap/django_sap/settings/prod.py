@@ -4,7 +4,7 @@ URL DE APP LOCAL
 import os
 from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1','localhost','192.170.1.251']
 
