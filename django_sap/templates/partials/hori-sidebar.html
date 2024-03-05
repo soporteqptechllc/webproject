@@ -13,14 +13,11 @@
                             <div class="arrow-down"></div>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
-                            <a href="{% url 'components_app:tables-viewtabletables1' 1 %}" class="dropdown-item" key="t-default">Operaciones Actuales</a>
-                            <a href="{% url 'components_app:tables-viewtabletables2' 1 %}" class="dropdown-item" key="t-default2">Histórico de Operaciones</a>
-                            <a href="{% url 'components_app:tables-viewtabletables1X' 1 %}" class="dropdown-item" key="t-default">Operaciones Actuales (Nuevo en Prueba)</a>
-                            <a href="{% url 'components_app:tables-viewtabletables2X' 1 %}" class="dropdown-item" key="t-default2">Histórico de Operaciones (Nuevo en Prueba)</a>
+                            <a href="{% url 'components_app:tables-viewtabletables1X' 1 %}" class="dropdown-item" key="t-default">Operaciones Actuales</a>
+                            <a href="{% url 'components_app:tables-viewtabletables2X' 1 %}" class="dropdown-item" key="t-default2">Histórico de Operaciones</a>
                             {% if user.is_authenticated %}
                                 {% if user.groups.all.0.name == 'Admin' or user.groups.all.0.name == 'AdminBarraza' %}                           
-                            <a href="{% url 'components_app:tables-edittables' 1 %}" class="dropdown-item" key="t-saas">Editar Operaciones</a>
-                            <a href="{% url 'components_app:tables-edittablesX' 1 %}" class="dropdown-item" key="t-saas">Editar Operaciones (Nuevo en Prueba)</a>
+                            <a href="{% url 'components_app:tables-edittablesX' 1 %}" class="dropdown-item" key="t-saas">Editar Operaciones</a>
                                 {%endif%}
                             {%endif%}
                         </div>
