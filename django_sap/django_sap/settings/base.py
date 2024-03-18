@@ -5,24 +5,28 @@
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 #BASE_DIR = Path(__file__).resolve().parent.parent
 from unipath import Path
+from django.core.exceptions import ImproperlyConfigured
+import json
+
 BASE_DIR = Path(__file__).ancestor(3)
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8*2ymm^)@dn73y_n)01#yqnz#rccv!97=9vdh&fsb169_u-8dw'
+# Se abre el archivo secret.json y se lee el contenido
+with open("secret.json") as f:
+    secret = json.loads(f.read())
+# Se crea una funcion para que nos devuelve las variables dentro del archivo
+def get_secret(secret_name, secrets=secret):
+    try:
+        return secrets[secret_name]
+    except:
+        msg = "La variable %s no existe" % secret_name
+        raise ImproperlyConfigured(msg)
+    
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = get_secret('SECRET_KEY')
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'djangosap_db',
-        'USER': 'adminsapapp',
-        'PASSWORD': '#Barraza2022',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
 
 # Application definition
-
 
 DJANGO_APPS = (
     'django.contrib.admin',

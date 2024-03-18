@@ -21,9 +21,9 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'djangosap_db',
-        'USER': 'adminsapapp',
-        'PASSWORD': '#Barraza2022',
+        'NAME': get_secret('DB_NAME'),
+        'USER': get_secret('USER'),
+        'PASSWORD': get_secret('PASSWORD'),
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -41,3 +41,10 @@ STATIC_ROOT = os.path.join(BASE_DIR,'assets')
 #STATICFILES_DIRS = [BASE_DIR.child('static')]
 
 # STATIC_URL = 'static/'
+
+# Email Settings
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = get_secret('EMAIL')
+EMAIL_HOST_PASSWORD = get_secret('PASS_EMAIL')
+EMAIL_PORT = 587
